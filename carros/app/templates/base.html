@@ -1,0 +1,244 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1D2124;
+            color: #DDDDDD;
+            margin: 0;
+            padding: 0;
+        }
+
+		.container {
+            width: 90%;
+			max-width: 1600px;
+            margin: 0 auto;
+		}
+
+        .nav-flex {
+            display: flex;
+        }
+
+        header {
+            color: #ECEFF4;
+            text-align: center;
+        }
+
+        footer {
+            color: #E5E9F0;
+            padding: 20px;
+            text-align: center;
+            margin-top:60px
+        }
+
+        nav {
+                background-color: #161616;
+                color: #ECEFF4;
+                height: 70px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .right-aligned {
+            margin-left: auto;
+        }
+
+        nav ul li {
+            margin: 0;
+            font-size: 20px;
+            color: #DDDDDD;
+        }
+
+        nav ul li a {
+            height: 70px;
+            color: #DDDDDD;
+            padding: 0 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a img {
+            height: 80%;
+            width: auto;
+            display: block;
+        }
+            
+        nav ul li a:hover {
+            background-color: #07080B
+        }
+        
+        nav ul li.active a {
+            background-color: #B6D8D3
+        }
+        
+        nav ul li.active a:hover {
+            background-color: #81A1C1
+        }
+
+        input[type='text'], input[type='number'], input[type='password'], select {
+            background-color: #4C566A;
+            color: #D8DEE9;
+            font-family: monospace;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 8px;
+            width: 100%;
+            flex: 1;
+            box-sizing: border-box;
+            border: 2px solid #4C566A;
+            border-radius: 4px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type='password']:focus, select:focus, textarea:focus {
+            background-color: #4c566ace;
+            border: #4c566ace;
+            padding: 12px;
+        }
+
+        input[type='text']::placeholder, input[type='number']::placeholder, input[type='password']::placeholder, select::placeholder, select {
+            font-family: monospace;
+            color: #D8DEE9;
+            margin-right: 10px;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active,
+        input:-webkit-autofill::placeholder {
+            background-color: #4C566A !important;
+            -webkit-box-shadow: 0 0 0 1000px #4C566A inset;
+            box-shadow: 0 0 0 1000px #4C566A inset;
+            -webkit-text-fill-color: #D8DEE9 !important;
+            font-family: monospace;
+            font-size: 16px !important;
+        }
+
+        .btn {
+            font-family: monospace;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: rgb(218, 58, 58) !important;
+            color: white !important;
+        }
+
+        .btn-danger {
+            background-color: rgb(255, 0, 0) !important;
+            color: white !important;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            gap: 30px;
+        }
+
+        button[type="submit"], input[type="submit"], .btn {
+            display: flex;
+            background-color: #B6D8D3;
+            color: #161616;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover, input[type="submit"]:hover, .btn:hover {
+            background-color: #81A1C1;
+        }
+
+        .user {
+            margin-left: 20px;
+        }
+
+        .user::before {
+            content: '\f007';
+            font-family: 'FontAwesome';
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+        outline: none;
+        }
+        
+        a {
+            text-decoration: none !important;
+            outline: none !important;
+        }
+
+		.text-primary {
+			color: #B6D8D3;
+		}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container nav-flex">
+                <ul>
+                    <li>
+                        <a href="{% url 'cars_list' %}" style="background-color: initial; padding-left: 0; padding-right: 16px">
+                            <img src="{% static 'images/carro_logo.png' %}" alt="Logo_Carros">
+                        </a>
+                    </li>
+                    <li><a href="{% url 'cars_list' %}">Carros</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'car_create' %}">Registrar Carro</a></li>
+                    {% endif %}
+
+                </ul>
+                <ul class="right-aligned">
+                    {% if not user.is_authenticated %}
+                        <li><a href="{% url 'register' %}">Cadastrar</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Sair</a></li>
+                        <li class="user">Olá, {{ user.username }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p><a href="https://github.com/davi-baptista" class="text-primary">&copy; 2024 Davi Baptista </a></p>
+    </footer>
+</body>
+</html>

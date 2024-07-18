@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        form {
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        table {
+          margin: 0 auto;
+          border-collapse: collapse;
+          width: 100%;
+          max-width: 600px;
+        }
+    
+        th, td {
+          padding: 4px;
+          text-align: left;
+        }
+    
+        input[type="text"], input[type="number"], select, textarea {
+          font-size: 14px;
+          max-width: 300px;
+        }
+    </style>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Editar Carro</h1>
+        <table>
+            {{form.as_table}}
+        </table>
+        
+        <div class="buttons-container">
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    form {
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    th, td {
+      padding: 4px;
+      text-align: left;
+    }
+
+    input[type="text"], input[type="number"], select, textarea {
+      font-size: 14px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    a {
+        color: #9acfc7;
+    }
+</style>
+<form method="post">
+    {% csrf_token %}
+    <h1>Editar Carro</h1>
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <div class="buttons-container">
+        <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+        <a href="{% url 'car_delete' pk=object.pk %}" class="btn btn-secondary">Apagar Carro</a>
+        <a href="{% url 'cars_list'%}" class="btn btn-primary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
